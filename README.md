@@ -1,6 +1,6 @@
 # graphs-labyrinth-csharp
 **TP Algoritmos em Grafos**
 
-Implementação do Labirinto do Minotauro utilizando o algoritmo A * com as heurísticas Distância de Manhattan e Distância Euclidiana. 
+Implementação básica do Labirinto do Minotauro utilizando matrizes e o algoritmo A * com heurísticas Distância de Manhattan e Distância Euclidiana. 
 
-<sub>*Implementation of Minotaur's Labyrinth using the algorithm A * with Manhattan and Euclidean distance as heuristics.</sub>
+<sub>*Basic implementation of Minotaur's Labyrinth using matrices and the algorithm A * with Manhattan and Euclidean distance as heuristics.</sub>
