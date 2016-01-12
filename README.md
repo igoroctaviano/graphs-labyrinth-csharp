@@ -1,5 +1,5 @@
 ##graphs-labyrinth-csharp
-##Trabalho Prático de Algoritmos em Grafos
+#Trabalho Prático de Algoritmos em Grafos
 
 Implementação básica do Labirinto do Minotauro utilizando matrizes e o algoritmo A * com heurísticas Distância de Manhattan e Distância Euclidiana.
 
