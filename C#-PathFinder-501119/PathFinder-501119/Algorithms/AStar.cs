@@ -1,9 +1,9 @@
 ﻿//
-// Algorithms in Graphs
-// Author: Igor Octaviano R. R.
-// ID: 501119
-// 
-
+// Disciplina: Algoritmos em Grafos
+// *Discipline: Algorithms in Graphs
+// Igor Octaviano
+// https://github.com/igoroctaviano
+//
 using System;
 using System.Collections;
 

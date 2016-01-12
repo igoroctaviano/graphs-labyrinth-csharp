@@ -1,9 +1,9 @@
 ﻿//
-// Algorithms in Graphs
-// Author: Igor Octaviano R. R.
-// ID: 501119
-// 
-
+// Disciplina: Algoritmos em Grafos
+// *Discipline: Algorithms in Graphs
+// Igor Octaviano
+// https://github.com/igoroctaviano
+//
 using System;
 using System.Collections;
 
@@ -94,6 +94,7 @@ namespace PathFinder_501119.Structure
         {
             Node auxNode = (Node)item;
             int cFactor = (this.TotalCost - auxNode.TotalCost);
+
             return cFactor;
         }
 
@@ -127,6 +128,7 @@ namespace PathFinder_501119.Structure
                     }
                 }
             }
+
             return successors;
         }
     }

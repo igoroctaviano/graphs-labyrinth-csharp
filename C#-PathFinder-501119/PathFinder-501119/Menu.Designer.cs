@@ -36,15 +36,10 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.LabelCompletedTime = new System.Windows.Forms.Label();
-            this.ComboBoxSearchType = new System.Windows.Forms.ComboBox();
-            this.LabelSearchType = new System.Windows.Forms.Label();
             this.labelHeuristic = new System.Windows.Forms.Label();
             this.comboBoxHeuristicType = new System.Windows.Forms.ComboBox();
             this.labelMovementsAStar = new System.Windows.Forms.Label();
             this.labelAStar = new System.Windows.Forms.Label();
-            this.labelBreadth = new System.Windows.Forms.Label();
-            this.labelMovementsBreadth = new System.Windows.Forms.Label();
-            this.labelCounterBreadth = new System.Windows.Forms.Label();
             this.labelCounterAStar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BarDelay)).BeginInit();
             this.SuspendLayout();
@@ -136,38 +131,13 @@
             this.LabelCompletedTime.Text = "Tempo  sec.";
             this.LabelCompletedTime.Click += new System.EventHandler(this.LabelCompletedTime_Click);
             // 
-            // ComboBoxSearchType
-            // 
-            this.ComboBoxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxSearchType.FormattingEnabled = true;
-            this.ComboBoxSearchType.Items.AddRange(new object[] {
-            "A*                      (Heurística)",
-            "Largura                      (Cega)"});
-            this.ComboBoxSearchType.Location = new System.Drawing.Point(286, 25);
-            this.ComboBoxSearchType.Name = "ComboBoxSearchType";
-            this.ComboBoxSearchType.Size = new System.Drawing.Size(177, 21);
-            this.ComboBoxSearchType.TabIndex = 18;
-            this.ComboBoxSearchType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSearchType_SelectedIndexChanged);
-            // 
-            // LabelSearchType
-            // 
-            this.LabelSearchType.AutoSize = true;
-            this.LabelSearchType.BackColor = System.Drawing.Color.Transparent;
-            this.LabelSearchType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelSearchType.Location = new System.Drawing.Point(283, 9);
-            this.LabelSearchType.Name = "LabelSearchType";
-            this.LabelSearchType.Size = new System.Drawing.Size(43, 17);
-            this.LabelSearchType.TabIndex = 19;
-            this.LabelSearchType.Text = "Busca";
-            this.LabelSearchType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // labelHeuristic
             // 
             this.labelHeuristic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHeuristic.AutoSize = true;
             this.labelHeuristic.BackColor = System.Drawing.Color.Transparent;
             this.labelHeuristic.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHeuristic.Location = new System.Drawing.Point(283, 49);
+            this.labelHeuristic.Location = new System.Drawing.Point(347, 66);
             this.labelHeuristic.Name = "labelHeuristic";
             this.labelHeuristic.Size = new System.Drawing.Size(70, 17);
             this.labelHeuristic.TabIndex = 35;
@@ -181,9 +151,9 @@
             this.comboBoxHeuristicType.Items.AddRange(new object[] {
             "Manhattan",
             "Euclidean"});
-            this.comboBoxHeuristicType.Location = new System.Drawing.Point(286, 65);
+            this.comboBoxHeuristicType.Location = new System.Drawing.Point(432, 66);
             this.comboBoxHeuristicType.Name = "comboBoxHeuristicType";
-            this.comboBoxHeuristicType.Size = new System.Drawing.Size(177, 21);
+            this.comboBoxHeuristicType.Size = new System.Drawing.Size(191, 21);
             this.comboBoxHeuristicType.TabIndex = 36;
             this.comboBoxHeuristicType.SelectedIndexChanged += new System.EventHandler(this.comboBoxHeuristicType_SelectedIndexChanged);
             // 
@@ -206,52 +176,13 @@
             this.labelAStar.AutoSize = true;
             this.labelAStar.BackColor = System.Drawing.Color.Transparent;
             this.labelAStar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAStar.Location = new System.Drawing.Point(477, 14);
+            this.labelAStar.Location = new System.Drawing.Point(496, 26);
             this.labelAStar.Name = "labelAStar";
             this.labelAStar.Size = new System.Drawing.Size(33, 25);
             this.labelAStar.TabIndex = 39;
             this.labelAStar.Text = "A*";
             this.labelAStar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelAStar.Click += new System.EventHandler(this.labelAStar_Click);
-            // 
-            // labelBreadth
-            // 
-            this.labelBreadth.AutoSize = true;
-            this.labelBreadth.BackColor = System.Drawing.Color.Transparent;
-            this.labelBreadth.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBreadth.Location = new System.Drawing.Point(477, 54);
-            this.labelBreadth.Name = "labelBreadth";
-            this.labelBreadth.Size = new System.Drawing.Size(79, 25);
-            this.labelBreadth.TabIndex = 41;
-            this.labelBreadth.Text = "Largura";
-            this.labelBreadth.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelBreadth.Click += new System.EventHandler(this.labelBreadth_Click);
-            // 
-            // labelMovementsBreadth
-            // 
-            this.labelMovementsBreadth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMovementsBreadth.AutoSize = true;
-            this.labelMovementsBreadth.BackColor = System.Drawing.Color.Transparent;
-            this.labelMovementsBreadth.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMovementsBreadth.Location = new System.Drawing.Point(549, 84);
-            this.labelMovementsBreadth.Name = "labelMovementsBreadth";
-            this.labelMovementsBreadth.Size = new System.Drawing.Size(75, 13);
-            this.labelMovementsBreadth.TabIndex = 40;
-            this.labelMovementsBreadth.Text = "movimentos.";
-            this.labelMovementsBreadth.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelCounterBreadth
-            // 
-            this.labelCounterBreadth.AutoSize = true;
-            this.labelCounterBreadth.BackColor = System.Drawing.Color.Transparent;
-            this.labelCounterBreadth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCounterBreadth.ForeColor = System.Drawing.Color.Red;
-            this.labelCounterBreadth.Location = new System.Drawing.Point(579, 58);
-            this.labelCounterBreadth.Name = "labelCounterBreadth";
-            this.labelCounterBreadth.Size = new System.Drawing.Size(19, 21);
-            this.labelCounterBreadth.TabIndex = 42;
-            this.labelCounterBreadth.Text = "0";
-            this.labelCounterBreadth.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelCounterAStar
             // 
@@ -275,17 +206,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(635, 565);
             this.Controls.Add(this.labelCounterAStar);
-            this.Controls.Add(this.labelCounterBreadth);
-            this.Controls.Add(this.labelBreadth);
-            this.Controls.Add(this.labelMovementsBreadth);
             this.Controls.Add(this.labelAStar);
             this.Controls.Add(this.labelMovementsAStar);
             this.Controls.Add(this.comboBoxHeuristicType);
             this.Controls.Add(this.labelHeuristic);
-            this.Controls.Add(this.ComboBoxSearchType);
             this.Controls.Add(this.LabelCompletedTime);
             this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.LabelSearchType);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.LabelDelay);
@@ -313,15 +239,10 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Label LabelCompletedTime;
-        private System.Windows.Forms.ComboBox ComboBoxSearchType;
-        private System.Windows.Forms.Label LabelSearchType;
         private System.Windows.Forms.Label labelHeuristic;
         private System.Windows.Forms.ComboBox comboBoxHeuristicType;
         private System.Windows.Forms.Label labelMovementsAStar;
         private System.Windows.Forms.Label labelAStar;
-        private System.Windows.Forms.Label labelBreadth;
-        private System.Windows.Forms.Label labelMovementsBreadth;
-        private System.Windows.Forms.Label labelCounterBreadth;
         private System.Windows.Forms.Label labelCounterAStar;
     }
 }

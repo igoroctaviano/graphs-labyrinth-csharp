@@ -1,9 +1,9 @@
 ﻿//
-// Algorithms in Graphs
-// Author: Igor Octaviano R. R.
-// ID: 501119
-// 
-
+// Disciplina: Algoritmos em Grafos
+// *Discipline: Algorithms in Graphs
+// Igor Octaviano
+// https://github.com/igoroctaviano
+//
 using System.Drawing;
 using System.Threading;
 using System.Collections;
@@ -89,9 +89,7 @@ namespace PathFinder_501119.Structure
         public void InsertWall(int x, int y)
         {
             if (AllowedNodes(x, y))
-            {
                 mapData[x, y] = WALL;
-            }
 
             this.PrintWalls();
         }
@@ -138,7 +136,7 @@ namespace PathFinder_501119.Structure
             return true;
         }
 
-        public void PrintSolution(ArrayList solutionPathList, ArrayList ignoredPathList, PathFinderType pathFinderType)
+        public void PrintSolution(ArrayList solutionPathList, ArrayList ignoredPathList)
         {
             // Get the current solution.
             this.solutionPathList = solutionPathList;
@@ -146,90 +144,8 @@ namespace PathFinder_501119.Structure
             // Get the current ignored solution.
             this.ignoredSolutionPathList = ignoredPathList;
 
-            switch (pathFinderType)
-            {
-                case PathFinderType.INFORMED:
-                    // Print all the used nodes and the optimal solution.
-                    this.PrintIgnoredSolutionAStar();
-                    break;
-                case PathFinderType.BLIND:
-                    // Print all the used nodes and the optimal solution.
-                    this.PrintIgnoredSolutionBFS();
-                    break;
-            }
-        }
-
-        private void PSBFS()
-        {
-            foreach (NodeBFS node in this.solutionPathList)
-            {
-                this.sequentialPosition = 0;
-                for (int x = 0; x <= xMax; x++)
-                {
-                    for (int y = 0; y <= yMax; y++)
-                    {
-                        NodeBFS tmp = new NodeBFS(null, null, 0, x, y);
-                        if (node.IsMatch(tmp))
-                        {
-                            if (AllowedNodes(x, y))
-                            {
-                                this.ColorTheButton(buttons[x, y], ROAD_COLOR);
-
-                                y = yMax;
-                                x = xMax;
-                            }
-                        }
-
-                        this.sequentialPosition++;
-                    }
-                }
-
-                Thread.Sleep(Delay);
-            }
-
-            this.thread.Join();
-            this.thread.Abort();
-        }
-
-        private void PrintIgnoredSolutionBFS()
-        {
-            this.thread = new Thread(PISBFS);
-            this.thread.Start();
-        }
-        private void PISBFS()
-        {
-            foreach (NodeBFS node in this.ignoredSolutionPathList)
-            {
-                this.sequentialPosition = 0;
-                for (int x = 0; x <= xMax; x++)
-                {
-                    for (int y = 0; y <= yMax; y++)
-                    {
-                        NodeBFS tmp = new NodeBFS(null, null, 0, x, y);
-                        if (node.IsMatch(tmp))
-                        {
-                            if (AllowedNodes(x, y))
-                            {
-                                this.ColorTheButton(buttons[x, y], IGNORED_COLOR);
-
-                                y = yMax;
-                                x = xMax;
-                            }
-                        }
-
-                        this.sequentialPosition++;
-                    }
-                }
-
-                Thread.Sleep(Delay);
-            }
-
-            // Print the optimal solution.
-            this.thread = new Thread(PSBFS);
-            this.thread.Start();
-
-            this.thread.Join();
-            this.thread.Abort();
+            // Print all the used nodes and the optimal solution.
+            this.PrintIgnoredSolutionAStar();
         }
 
         private void PSAS()
@@ -305,19 +221,10 @@ namespace PathFinder_501119.Structure
             this.thread.Abort();
         }
 
-        public void ClearSolution(PathFinderType pathFinderType)
+        public void ClearSolution()
         {
-            switch (pathFinderType)
-            {
-                case PathFinderType.INFORMED:
-                    this.thread = new Thread(CSAS);
-                    this.thread.Start();
-                    break;
-                case PathFinderType.BLIND:
-                    this.thread = new Thread(CSBFS);
-                    this.thread.Start();
-                    break;
-            }
+            this.thread = new Thread(CSAS);
+            this.thread.Start();
         }
         public void CSAS()
         {
@@ -329,37 +236,6 @@ namespace PathFinder_501119.Structure
                     for (int y = 0; y <= yMax; y++)
                     {
                         Node tmp = new Node(null, null, 0, node.Formula, x, y);
-                        if (node.IsMatch(tmp))
-                        {
-                            if (AllowedNodes(x, y))
-                            {
-                                this.ColorTheButton(buttons[x, y], PATH_COLOR);
-                                mapData[x, y] = ROAD;
-
-                                y = yMax;
-                                x = xMax;
-                            }
-                        }
-
-                        this.sequentialPosition++;
-                    }
-                }
-            }
-
-            this.thread.Join();
-            this.thread.Abort();
-        }
-
-        public void CSBFS()
-        {
-            foreach (NodeBFS node in this.ignoredSolutionPathList)
-            {
-                this.sequentialPosition = 0;
-                for (int x = 0; x <= xMax; x++)
-                {
-                    for (int y = 0; y <= yMax; y++)
-                    {
-                        NodeBFS tmp = new NodeBFS(null, null, 0, x, y);
                         if (node.IsMatch(tmp))
                         {
                             if (AllowedNodes(x, y))

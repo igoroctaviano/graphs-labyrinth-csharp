@@ -1,9 +1,9 @@
 ﻿//
-// Algorithms in Graphs
-// Author: Igor Octaviano R. R.
-// ID: 501119
-// 
-
+// Disciplina: Algoritmos em Grafos
+// *Discipline: Algorithms in Graphs
+// Igor Octaviano
+// https://github.com/igoroctaviano
+//
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,24 +15,15 @@ using PathFinder_501119.Structure;
 
 namespace PathFinder_501119
 {
-    public enum PathFinderType
-    {
-        INFORMED = 0,
-        BLIND = 1
-    }
-
     public partial class Menu : Form
     {
         private const int MAP_SIZE = 11;
         private Map map;
 
-        private BFS breadth;
         private AStar aStar;
 
         private Button[,] buttons;
         private Stopwatch stopWatch;
-
-        private PathFinderType pathFinderType;
 
         public Menu()
         {
@@ -40,7 +31,6 @@ namespace PathFinder_501119
 
             // Initialize search algorithms.
             this.aStar = new AStar();
-            this.breadth = new BFS();
 
             // Initialize components.
             this.stopWatch = new Stopwatch();
@@ -63,11 +53,9 @@ namespace PathFinder_501119
 
             // Start labels.
             this.labelCounterAStar.Text = "0";
-            this.labelCounterBreadth.Text = "0";
             this.LabelCompletedTime.Text = "Tempo " + 0 + " sec.";
 
             // Start combobox with default values.
-            this.ComboBoxSearchType.SelectedIndex = 0;
             this.comboBoxHeuristicType.SelectedIndex = 0;
 
             // Reset map.
@@ -103,26 +91,13 @@ namespace PathFinder_501119
             // Set delay.
             this.map.Delay = (int)Math.Pow(this.BarDelay.Value, 2);
 
-            this.pathFinderType = (PathFinderType)this.ComboBoxSearchType.SelectedIndex;
-            switch (this.pathFinderType)
-            {
-                case PathFinderType.INFORMED:
-                    // Set heuristic formula.
-                    this.aStar.Formula = (HeuristicFormula)this.comboBoxHeuristicType.SelectedIndex;
-                    ArrayList solution = this.aStar.GetSolutionPath();
-                    ArrayList ignoredSolution = this.aStar.IgnoredSolutionPath;
-                    this.map.PrintSolution(solution, ignoredSolution, this.pathFinderType);
-                    int movements = (this.aStar.IgnoredSolutionPath.Count);
-                    this.labelCounterAStar.Text = movements.ToString();
-                    break;
-                case PathFinderType.BLIND:
-                    solution = this.breadth.GetSolutionPath();
-                    ignoredSolution = this.breadth.IgnoredSolutionPath;
-                    this.map.PrintSolution(solution, ignoredSolution, this.pathFinderType);
-                    movements = (this.breadth.IgnoredSolutionPath.Count * 2);
-                    this.labelCounterBreadth.Text = movements.ToString();
-                    break;
-            }
+            // Set heuristic formula.
+            this.aStar.Formula = (HeuristicFormula)this.comboBoxHeuristicType.SelectedIndex;
+            ArrayList solution = this.aStar.GetSolutionPath();
+            ArrayList ignoredSolution = this.aStar.IgnoredSolutionPath;
+            this.map.PrintSolution(solution, ignoredSolution);
+            int movements = (this.aStar.IgnoredSolutionPath.Count);
+            this.labelCounterAStar.Text = movements.ToString();
 
             this.StopTimer();
         }
@@ -135,7 +110,6 @@ namespace PathFinder_501119
             this.buttonClear.Enabled = true;
             this.buttonReset.Enabled = true;
 
-            this.ComboBoxSearchType.Enabled = false;
             this.comboBoxHeuristicType.Enabled = false;
         }
 
@@ -189,25 +163,14 @@ namespace PathFinder_501119
         {
             this.ButtonStart.Enabled = true;
 
-            this.pathFinderType = (PathFinderType)this.ComboBoxSearchType.SelectedIndex;
-            switch (this.pathFinderType)
-            {
-                case PathFinderType.INFORMED:
-                    this.map.ClearSolution(this.pathFinderType);
-                    break;
-                case PathFinderType.BLIND:
-                    this.map.ClearSolution(this.pathFinderType);
-                    break;
-            }
+            this.map.ClearSolution();
 
             // Disable clear button.
             this.buttonClear.Enabled = false;
 
             this.comboBoxHeuristicType.Enabled = true;
-            this.ComboBoxSearchType.Enabled = true;
 
             this.comboBoxHeuristicType.SelectedIndex = 0;
-            this.ComboBoxSearchType.SelectedIndex = 0;
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -222,21 +185,6 @@ namespace PathFinder_501119
             this.buttonReset.Enabled = false;
 
             this.comboBoxHeuristicType.Enabled = true;
-            this.ComboBoxSearchType.Enabled = true;
-        }
-
-        private void ComboBoxSearchType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.pathFinderType = (PathFinderType)this.ComboBoxSearchType.SelectedIndex;
-            switch (this.pathFinderType)
-            {
-                case PathFinderType.INFORMED:
-                    this.comboBoxHeuristicType.Enabled = true;
-                    break;
-                case PathFinderType.BLIND:
-                    this.comboBoxHeuristicType.Enabled = false;
-                    break;
-            }
         }
 
         private void Menu_Load(object sender, EventArgs e) { }
